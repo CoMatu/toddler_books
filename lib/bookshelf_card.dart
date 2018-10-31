@@ -9,13 +9,20 @@ class BookshelfCard extends StatelessWidget {
       key: key,
       child: SizedBox(
         height: 200.0,
-        child: Stack(
-          children: <Widget>[
-            Image(
-              image: AssetImage('assets/images/card_frame.png'),
-            )
-          ],
-        ),
+        width: 280.0,
+        child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 10.0, color: Colors.amber),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 7.0, color: Colors.brown[500]),
+                  borderRadius: BorderRadius.circular(5.0)
+                ),
+              ),
+            ),
+
       )
     );
   }
