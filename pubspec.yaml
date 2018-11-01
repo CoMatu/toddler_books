@@ -43,6 +43,7 @@ flutter:
     - assets/images/start_background.png
     - assets/images/card_frame.png
     - assets/images/start_title.png
+    - assets/images/surround.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
