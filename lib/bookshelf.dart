@@ -47,7 +47,22 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                       fit: BoxFit.fill),
                 ),
               ),
-              Center(child: BookshelfCard()),
+              Center(
+                  child: BookshelfCard()
+/*
+                  ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                          itemBuilder: (context, index) {
+                        return BookshelfCard();
+                      });
+                    },
+                  )
+*/
+              ),
               Transform(
                 transform: Matrix4.translationValues(animval * width, 0.0, 0.0),
                 child: Container(
@@ -61,7 +76,6 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
               )
             ],
           ),
-
         );
       },
     );
@@ -73,22 +87,3 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
     super.dispose();
   }
 }
-
-/*
-    return Scaffold(
-      body: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/background.png'),
-                    fit: BoxFit.fill),
-              ),
-            ),
-            Center(child: BookshelfCard())
-          ],
-        ),
-
-    );
-
- */
