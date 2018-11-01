@@ -47,22 +47,6 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                       fit: BoxFit.fill),
                 ),
               ),
-              Center(
-                  child: BookshelfCard()
-/*
-                  ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                          itemBuilder: (context, index) {
-                        return BookshelfCard();
-                      });
-                    },
-                  )
-*/
-              ),
               Transform(
                 transform: Matrix4.translationValues(animval * width, 0.0, 0.0),
                 child: Container(
@@ -73,7 +57,16 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                     fit: BoxFit.fill,
                   )
                 )
-              )
+              ),
+              Center(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return BookshelfCard();
+                    },
+                  )
+              ),
             ],
           ),
         );
