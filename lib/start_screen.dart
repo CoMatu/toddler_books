@@ -1,17 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:toddler_books/bookshelf.dart';
+import 'package:toddler_books/bookshelf_route.dart';
 
-class StartScreen extends StatefulWidget{
+class StartScreen extends StatefulWidget {
   @override
   StartScreenState createState() {
-    return new StartScreenState();
+    return StartScreenState();
   }
 }
 
 class StartScreenState extends State<StartScreen> {
-
   startTime() async {
     var _duration = Duration(seconds: 2);
     return Timer(_duration, navigationPage);
@@ -25,22 +24,14 @@ class StartScreenState extends State<StartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Container(
-        child: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/start_background.png'),
-                fit: BoxFit.fitWidth),
-              ),
-            ),
-            Center(
-              child: FlutterLogo(size: 150.0,),
-            )
-          ],
+        color: Colors.amber[50],
+        child: Center(
+            child:
+            Image(
+          image: AssetImage('assets/images/start_title.png'),
+        )
         ),
       ),
     );
@@ -48,10 +39,7 @@ class StartScreenState extends State<StartScreen> {
 
   void navigationPage() {
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => BookShelf()),
-    );
+    Navigator.of(context).push(BookshelfRoute());
 
   }
 }
