@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:toddler_books/book_page.dart';
 
 class BookshelfCard extends StatelessWidget {
   final String assetName = 'assets/images/start_background.png';
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    Radius radius = Radius.circular(10.0);
+    const Radius radius = Radius.circular(10.0);
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radius)),
       color: Colors.transparent,
@@ -23,6 +23,18 @@ class BookshelfCard extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(width: 7.0, color: Colors.brown[500]),
           ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BookPage()),
+              );
+            },
+            child: Image(
+                image: AssetImage(assetName),
+              fit: BoxFit.fill,
+            ),
+          )
         ),
       ),
     );

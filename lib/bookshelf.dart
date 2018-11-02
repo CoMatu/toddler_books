@@ -19,7 +19,7 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
   Animation _animation;
   Animation _animationDown;
 
-  final String titlePng = 'assets/images/start_title.png';
+  final String titlePng = 'assets/images/bookshelf_title.png';
 
   @override
   void initState() {
@@ -98,6 +98,7 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
               height: 200.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return BookshelfCard();
