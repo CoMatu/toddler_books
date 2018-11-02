@@ -10,19 +10,34 @@ class BookShelf extends StatefulWidget {
 }
 
 class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
+
+  final String decorationPng = 'assets/images/surround.png';
+  final String backgroundPng = 'assets/images/background.png';
+
   AnimationController _controller;
+  AnimationController _controllerDown;
   Animation _animation;
+  Animation _animationDown;
+
+  final String titlePng = 'assets/images/start_title.png';
 
   @override
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
     _animation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
       parent: _controller,
-      curve: Curves.fastOutSlowIn,
+      curve: Curves.ease,
+    ));
+    _controllerDown =
+        AnimationController(vsync: this, duration: Duration(seconds: 4));
+    _animationDown = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+      parent: _controllerDown,
+      curve: Curves.ease,
     ));
     _controller.forward();
+    _controllerDown.forward();
   }
 
   @override
@@ -34,7 +49,7 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/background.png'),
+                  image: AssetImage(backgroundPng),
                   fit: BoxFit.fill),
             ),
           ),
@@ -48,9 +63,32 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                       width: width,
                       color: Colors.transparent,
                       child:
-                      Image(image: AssetImage('assets/images/surround.png',),
+                      Image(image: AssetImage(decorationPng,),
                         fit: BoxFit.fill,
                       )
+                  )
+              );
+            },
+          ),
+          AnimatedBuilder(
+            animation: _controllerDown,
+            builder: (BuildContext context, Widget child) {
+              double animval = _animationDown.value;
+              return Transform(
+                  transform: Matrix4.translationValues(animval * width, 0.0, 0.0),
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                      width: width,
+                      color: Colors.transparent,
+                      child: Padding(padding: EdgeInsets.only(top: 35.0),
+                      child: SizedBox(
+                        height: 25.0,
+                        child: Image(image: AssetImage(titlePng,),
+                          fit: BoxFit.fill,
+                        )
+                        ,
+                      )
+                        ,)
                   )
               );
             },
