@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toddler_books/bookshelf_card.dart';
 import 'package:flutter/animation.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class BookShelf extends StatefulWidget {
   @override
@@ -96,7 +97,23 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
           Center(
             child: Container(
               height: 200.0,
-              child: ListView.builder(
+              child: FutureBuilder(
+                future: _getBooksList(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return BookshelfCard();
+                    },
+                  );
+
+                },
+              )
+
+/*
+              ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.only(left: 10.0, right: 10.0),
                 itemCount: 5,
@@ -104,6 +121,7 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                   return BookshelfCard();
                 },
               )
+*/
               ,
             ),
           )
@@ -117,4 +135,13 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
     _controller.dispose();
     super.dispose();
   }
+
+  Future<List<String>> _getBooksList() async {
+    List<String> bookList = List();
+    FirebaseDatabase database = FirebaseDatabase.instance;
+    DatabaseReference reference = database.reference().child('books');
+
+    return bookList;
+  }
+
 }

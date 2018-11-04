@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "595568876881",
+    "firebase_url": "https://todbook-32806.firebaseio.com",
+    "project_id": "todbook-32806",
+    "storage_bucket": "todbook-32806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595568876881:android:c8273fa147223e66",
+        "android_client_info": {
+          "package_name": "ru.httpskazkimal.toddlerbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595568876881-fn2n6ddfdgm4dip4i5gnhph6c1e84mvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.httpskazkimal.toddlerbooks",
+            "certificate_hash": "3398b2490d489e777c87d5a9d81e920b38d7e34a"
+          }
+        },
+        {
+          "client_id": "595568876881-6vmntkt5vtlp5l9mh5dp897n2ji2jj31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBPP6_9lvMOiVnty9FZ4_vHBYNunnNAPE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595568876881-6vmntkt5vtlp5l9mh5dp897n2ji2jj31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
