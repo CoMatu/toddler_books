@@ -98,17 +98,24 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
             child: Container(
               height: 200.0,
               child: FutureBuilder(
-                future: _getBooksList(),
+                future: _getDatabaseData(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return BookshelfCard();
-                    },
-                  );
-
+                  if(snapshot.data != null){
+                    List data = List();
+                    for (var value in snapshot.data.value) {
+                      data.add(value);
+                    }
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        return BookshelfCard();
+                      },
+                    );
+                  } else {
+                    return Container();
+                  }
                 },
               )
 
@@ -142,6 +149,14 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
     DatabaseReference reference = database.reference().child('books');
 
     return bookList;
+  }
+
+  Future<DataSnapshot> _getDatabaseData() async {
+    var _database = await FirebaseDatabase.instance
+        .reference()
+        .child('books')
+        .once();
+    return _database;
   }
 
 }
