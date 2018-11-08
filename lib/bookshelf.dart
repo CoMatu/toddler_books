@@ -101,16 +101,14 @@ class BookShelfState extends State<BookShelf> with TickerProviderStateMixin {
                 future: _getDatabaseData(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if(snapshot.data != null){
-                    List data = List();
-                    for (var value in snapshot.data.value) {
-                      data.add(value);
-                    }
+                    Map map = snapshot.data.value;
+
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      itemCount: data.length,
+                      itemCount: map.length,
                       itemBuilder: (context, index) {
-                        return BookshelfCard();
+                        return BookshelfCard(map[index]);
                       },
                     );
                   } else {

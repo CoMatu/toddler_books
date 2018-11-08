@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:toddler_books/book_page.dart';
 
 class BookshelfCard extends StatelessWidget {
+
+
   final String assetName = 'assets/images/start_background.png';
+
+  final String coverUrl = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +34,7 @@ class BookshelfCard extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => BookPage()),
               );
             },
-            child: Image(
-                image: AssetImage(assetName),
-              fit: BoxFit.fill,
-            ),
+            child: Image.network(coverUrl),
           )
         ),
       ),
