@@ -8,6 +8,8 @@ class BookshelfCard extends StatelessWidget {
 
   final String coverUrl = '';
 
+  BookshelfCard(map);
+
   @override
   Widget build(BuildContext context) {
     const Radius radius = Radius.circular(10.0);
